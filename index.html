@@ -82,30 +82,49 @@
       font-size: 14px;
       color: #aaa;
     }
+
+    .views {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #00bfff;
+      opacity: 0.8;
+    }
   </style>
 </head>
 <body>
 
   <div class="box">
-    <h1>⚡ IceHub Script ⚡</h1>
+    <h1>❄️ IceHub Script ❄️</h1>
 
     <pre id="script">
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Lordzyxz/IceHub/refs/heads/main/IceDuelsLagger"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Lordzyxz/Script/refs/heads/main/PVP"))()
     </pre>
 
     <button onclick="copiar()">📋 Copiar Script</button>
 
     <div class="status" id="status">Pronto para copiar</div>
+    <div class="views" id="views">👀 Carregando visitas...</div>
   </div>
 
   <script>
     function copiar() {
-      const texto = `loadstring(game:HttpGet("https://raw.githubusercontent.com/Lordzyxz/IceHub/refs/heads/main/IceDuelsLagger"))()`;
-      
+      const texto = `loadstring(game:HttpGet("https://raw.githubusercontent.com/Lordzyxz/Script/refs/heads/main/PVP"))()`;
       navigator.clipboard.writeText(texto);
-
       document.getElementById("status").innerText = "✅ Copiado com sucesso!";
     }
+
+    // contador simples com localStorage
+    let visitas = localStorage.getItem("visitas");
+
+    if (!visitas) {
+      visitas = 1;
+    } else {
+      visitas = parseInt(visitas) + 1;
+    }
+
+    localStorage.setItem("visitas", visitas);
+
+    document.getElementById("views").innerText = "👀 Visitas: " + visitas;
   </script>
 
 </body>
